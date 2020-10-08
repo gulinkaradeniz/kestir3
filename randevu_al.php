@@ -1,0 +1,87 @@
+<?php
+//include "includes/loginkontrol.php";
+include "includes/baglanti.php";
+$title="Randevu Al";
+include "includes/header.php";
+?>
+<body>
+<div class="accountbg"></div>
+<div class="wrapper-page">
+    <div class="card card-pages shadow-none">
+        <div class="card-body">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card m-b-30 card-body">
+                            <h5 class="font-18 text-center">RANDEVU AL</h5>
+                                <?php include "includes/sistemmesaji.php" ?>
+                                <?php if ($_SESSION["isadmin"]){?>
+                                    <div class="field">
+                                        <p class="control">
+                                        <button class="button is-success is-fullwidth" onclick="javascript:location.href='uye_sec.php'">
+                                            ÜYELER
+                                        </button>
+                                        </p>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <div class="button-items">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" onclick="javascript:location.href='islemler.php'">İŞLEMLER</button>
+                                    <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" onclick="javascript:location.href='tarihsaat.php'">TARİH/SAAT</button><hr> 
+                                </div>
+                                <?php
+                                if(isset($_POST['uyeler'])) {
+                                    $_SESSION['userid']=intval($_POST['uyeler']);
+                                    echo "Seçilen üye=".($_POST['uyeler'])."<br>";
+                                }
+
+                                if(isset($_SESSION["secilenislemler"])){
+                                    $islemler=$_SESSION["secilenislemler"];
+                                
+                                    foreach($islemler as $islem){
+                                    $islem=intval($islem);
+                                    $sorgu = $mysqli->query("SELECT * FROM islemler where id=$islem");
+                                    while($satir=$sorgu->fetch_assoc()){
+                                       
+                                        echo "Seçilen işlem=".$satir["isim"]."<br>";
+                                    }
+
+                                }
+
+                                }
+
+                                if(isset($_SESSION["secilentarih"])){
+                                    echo "Seçilen tarih=".($_SESSION["secilentarih"]);
+                                }
+                                ?>
+                                <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" onclick="javascript:location.href='randevu_kaydet.php'">RANDEVUYU ONAYLA</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="<?= $sollink?>">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="includes/cikis.php">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $saglink?>">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
