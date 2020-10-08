@@ -107,9 +107,9 @@ include "includes/header.php";
                                                                             <span class="icon has-text-success">
                                                                                 <i class="fas fa-check-square"></i>
                                                                             </span>
-                                                                            </a></td>
-                                                                            
-                                                                            <td><a href="islemiptal.php?id=<?php echo $id; ?>"class="level-item" aria-label="like">
+                                                                            </a>
+                                                                            <span>&nbsp;&nbsp;</span>
+                                                                            <a href="islemiptal.php?id=<?php echo $id; ?>"class="level-item" aria-label="like">
                                                                             <span class="icon has-text-danger">
                                                                                 <i class="fas fa-ban"></i>
                                                                             </span>

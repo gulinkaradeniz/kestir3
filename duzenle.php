@@ -17,19 +17,19 @@ include "includes/header.php";
                         
                         <?php include "includes/sistemmesaji.php" ?>
     
-                        <form class="form-horizontal m-t-30" action="sifrekontrol.php" method="POST">
+                        <form class="form-horizontal m-t-30" action="" method="POST">
     
                             <div class="form-group">
                                 <div class="col-12">
                                         <label>İşlem</label>
-                                    <input name="isim"class="form-control" type="text" required="" placeholder="İşlem">
+                                    <input name="isim"class="form-control" type="text" required="" placeholder="İşlem" value="<?php echo $sonuc['isim']; ?>">
                                 </div>
                             </div>
     
                             <div class="form-group">
                                 <div class="col-12">
                                         <label>İşlem Saati</label>
-                                    <input name="sure"class="form-control" type="text" required="" placeholder="..saat">
+                                    <input name="sure"class="form-control" type="text" required="" placeholder="..saat" value="<?php echo $sonuc['sure']; ?>">
                                 </div>
                             </div>
 

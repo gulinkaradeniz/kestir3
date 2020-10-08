@@ -8,6 +8,19 @@ include "includes/header.php";
         
         <div class="wrapper-page">
                 <div class="card card-pages shadow-none">
+                    <ul class="navbar-right list-inline float-right mb-0">
+                        <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="fas fa-align-justify"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated language-switch">
+                                <a class="dropdown-item" href="admin_randevular.php"><span> RANDEVULAR </span></a>
+                                <a class="dropdown-item" href="admin_uyeler.php"><span> ÜYELER </span></a>
+                                <a class="dropdown-item" href="admin_islem_ekle.php"><span> İŞLEMLER </span></a>
+                                <a class="dropdown-item" href="includes/cikis.php"><span> ÇIKIŞ </span></a>
+                            </div>
+                        </li>
+                    </ul>
     
                     <div class="card-body">
                         <h5 class="font-18 text-center">İŞLEMLER</h5>
@@ -42,7 +55,6 @@ include "includes/header.php";
                                             <table class="table table-hover mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>id</th>
                                                         <th>İşlem</th>
                                                         <th>İşlem Saati</th>
                                                         <th>Sil/Düzenle</th>
@@ -61,7 +73,6 @@ include "includes/header.php";
                                                                     <?php
                                                                     $id = $satir['id'];?>
                                                                     <tr>
-                                                                    <th scope="row"><?=$satir["id"];?></th>
                                                                     <td><?=$satir["isim"];?></td>
                                                                     <td class="text-center"><?=$satir["sure"];?></td>
                                                                     
@@ -125,124 +136,5 @@ include "includes/header.php";
             }
         }
         ?>     
-    </body>
-
-
-
-    <body>
-        <div class="container">
-            <div class="columns">
-                <div class="column is-6 is-offset-3">
-                    <div class="card">
-                        <div class="has-text-centered">
-                            <div class="card-content">
-                            <p class="subtitle is-3">
-                                İŞLEMLERİ DÜZENLE
-                            </p>
-                            <?php include "sistemmesaji.php" ?>
-                                <p class="subtitle">
-                                    <form  action="admin_islem_kontrol.php" method="POST">
-                                        <div class="field giris">
-                                            <p class="control has-icons-left">
-                                            <input class="input" placeholder="İşlem" name="isim" required>
-                                            <span class="icon is-small is-left">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                            </p>
-                                        </div>
-                                        <div class="field giris">
-                                            <p class="control has-icons-left">
-                                            <input class="input"placeholder="..saat" name="sure" required>
-                                            <span class="icon is-small is-left">
-                                                <i class="fas fa-hourglass-start"></i>
-                                            </span>
-                                            </p>
-                                        </div>
-                                        <div class="field">
-                                            <button class="button is-success is-warning is-fullwidth" >
-                                                İşlem Ekle
-                                            </button>
-                                        </div>
-                                        
-                                        <div class="has-text-centered">
-                                            <div class="card-content">
-                                            <p class="subtitle is-3">
-                                                İŞLEMLER
-                                            </p>
-                                            <p class="subtitle">
-                                                <div class="content">
-                                                <?php
-                                               
-                                                $sorgu = $mysqli->query("SELECT * FROM islemler");
-                                                if($sorgu->num_rows>0){
-                                                    while($satir=$sorgu->fetch_assoc()){?>
-                                                    <p class="subtitle">
-                                                        <div class="box">   
-                                                            <div class="level-left">
-                                                                <?php
-                                                                $id = $satir['id']; 
-                                                                echo $satir["id"]."-";
-                                                                echo $satir["isim"]."-";
-                                                                echo $satir["sure"]."&nbsp;"."saat"." ";?>
-                                                            </div>
-                                                            <div class="level-right">
-                                                                <a href="sil.php?id=<?php echo $id; ?>" class="level-item" aria-label="retweet">
-                                                                <span class="icon has-text-danger">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </span>
-                                                                </a>
-                                                                <a href="duzenle.php?id=<?php echo $id; ?>" class="level-item" aria-label="like">
-                                                                <span class="icon is-small">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </span>
-                                                                </a>
-                                                            </div>
-                                                                
-                                                            
-                                                        </div>
-                                                    </p>
-                                                        
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                                </div>
-                                            </p>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </p>
-                            </div>
-                        </div>
-                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                        
-                            <div id="navbarBasicExample" class="navbar-menu">
-                                <div class="navbar-start">
-                                <a class="navbar-item" href="admin_randevular.php">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                                
-                            </div>
-                            <div id="navbarBasicExample" class="navbar-menu">
-                                <div class="navbar-end">
-                                 
-                                 <a class="navbar-item" href="admin_uyeler.php">
-                                     <i class="fas fa-chevron-right"></i>
-                                 </a>
-                             </div>
-                             <div id="navbarBasicExample" class="navbar-menu">
-                                <div class="navbar-start">
-                                    <a class="navbar-item" href="cikis.php">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                    
-                                </div>
-                            </div>
-                            
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
     </body>
 </html>

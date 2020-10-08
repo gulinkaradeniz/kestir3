@@ -1,5 +1,5 @@
 <?php
-//include "includes/loginkontrol.php";
+include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 $title="Randevu Al";
 include "includes/header.php";
@@ -19,9 +19,7 @@ include "includes/header.php";
                                 <?php if ($_SESSION["isadmin"]){?>
                                     <div class="field">
                                         <p class="control">
-                                        <button class="button is-success is-fullwidth" onclick="javascript:location.href='uye_sec.php'">
-                                            ÜYELER
-                                        </button>
+                                        <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" onclick="javascript:location.href='uye_sec.php'">ÜYELER</button>
                                         </p>
                                     </div>
                                 <?php
