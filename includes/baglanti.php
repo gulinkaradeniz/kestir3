@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $mysqli = new mysqli("localhost", "kestiruser", "kestirpass", "kestir2db");
 
 /* check connection */
