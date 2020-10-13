@@ -40,10 +40,15 @@ include "includes/header.php";
                                             <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" onclick="javascript:location.href='islemler.php'">İŞLEMLER</button>
                                             <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" onclick="javascript:location.href='tarihsaat.php'">TARİH/SAAT</button><hr> 
                                         </div>
+                                        
                                         <?php
                                         if(isset($_POST['uyeler'])) {
-                                            $_SESSION['userid']=intval($_POST['uyeler']);
-                                            echo "Seçilen üye=".($_POST['uyeler'])."<br>";
+                                            $_id=intval($_POST['uyeler']);
+                                            $sorgu3 = $mysqli->query("SELECT * FROM users WHERE id=$_id");
+                                            while($satir3=$sorgu3->fetch_assoc()){
+                                                echo "Seçilen üye=".($_POST['uyeler'])."<br>";
+                                            }
+                                            
                                         }
 
                                         if(isset($_SESSION["secilenislemler"])){
@@ -55,6 +60,7 @@ include "includes/header.php";
                                             while($satir=$sorgu->fetch_assoc()){
                                             
                                                 echo "Seçilen işlem=".$satir["isim"]."<br>";
+                                                
                                             }
 
                                         }

@@ -59,17 +59,18 @@ include "includes/header.php";
                                                 <th>Tarih</th>
                                                 <th>Saat</th>
                                                 <th>İşlem</th>
+                                                <th>Tamamlandı/İptal Edildi</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $userid=intval($_SESSION['userid']);    
-                                            $query = "SELECT * FROM tasks INNER JOIN users ON users.id=tasks.user WHERE status=1 and iptal=0";
+                                            $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON users.id=tasks.user WHERE status=1 and iptal=0";
                                             if(isset($_GET['sorgu'])) {
-                                                if($_GET['sorgu'] == "iptal") $query = "SELECT * FROM tasks INNER JOIN users ON users.id=tasks.user WHERE iptal=1";
-                                                if($_GET['sorgu'] == "bekleyen") $query = "SELECT * FROM tasks INNER JOIN users ON users.id=tasks.user  WHERE status=1 and iptal=0";
-                                                if($_GET['sorgu'] == "tamamlanan") $query = "SELECT * FROM tasks INNER JOIN users ON users.id=tasks.user  WHERE  status=0";
+                                                if($_GET['sorgu'] == "iptal") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE iptal=1";
+                                                if($_GET['sorgu'] == "bekleyen") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE status=1 and iptal=0";
+                                                if($_GET['sorgu'] == "tamamlanan") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id  WHERE  status=0";
                                             }
                                             $sorgu =$mysqli->query($query);
                                                 if($sorgu->num_rows>0){
@@ -86,6 +87,7 @@ include "includes/header.php";
                                                                     <td><?=$satir["telefon"];?></td>
                                                                     <td><?=$tarih;?></td>
                                                                     <td><?=$saat;?></td>
+                                                                    <td>
                                                                     <?php
                                                                     $islem = $satir["operations"];
                                                                         $dizi = explode (",",$islem);
@@ -95,12 +97,13 @@ include "includes/header.php";
                                                                             $sorgu2 = $mysqli->query("SELECT * FROM islemler WHERE id=$deger");
                                                                             
                                                                             while($s = $sorgu2->fetch_assoc()){?>
-                                                                                <td><?=$s["isim"];?></td><?php
+                                                                                <?=$s["isim"];?><br><?php
                                                                             }   
                                                                         }
                                                                     
                                                                     
                                                                     ?>  
+                                                                    </td>
                                                                     <form method="POST">
                                                                         <nav class="level is-mobile">
                                                                         <div class="level-left">
@@ -117,7 +120,7 @@ include "includes/header.php";
                                                                             </a></td>
                                                                         </div>
                                                                         </nav>
-                                                                    </form>  
+                                                                    </form>
                                                                     
                                                                     </tr>   
                                                                 </div>

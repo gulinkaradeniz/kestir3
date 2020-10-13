@@ -15,6 +15,7 @@ if(isset($_SESSION['secilentarih']) && isset($_SESSION['secilenislemler']) && is
 
     unset($_SESSION['secilenislemler']);
     unset($_SESSION['secilentarih']);
+    unset($_SESSION['secilenuyeler']);
     $_SESSION['sistemmesaji']="RANDEVU OLUŞTURULDU.";
     $_SESSION['sistemmesajicss']="alert-success";
     header('Location: randevu_basarili.php');

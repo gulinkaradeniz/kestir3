@@ -41,8 +41,10 @@ include "includes/header.php";
                     </div>
                 </div>
             </div>
+
         </div>
     <div class="col-1 col-sm-2"></div>
 </div>
+
 </body>
 </html>

@@ -12,6 +12,14 @@ include "includes/header.php";
         <div class="col-10 col-sm-8">
             <div class="card card-pages m-t-40 shadow-none">
                 <div class="card-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="uye_anasayfa.php">Üye Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="includes/cikis.php">Çıkış</a>
+                        </li>
+                    </ul>
                 
                     <div class="row">
                         
@@ -31,6 +39,7 @@ include "includes/header.php";
                                                 $dizi=$satir3["adsoyad"]."-".$satir3["telefon"];
                                                 echo "<option value=". $satir3["id"] .">".$dizi."</option>";
                                                 
+                                                
                                             }
                                             ?>
                                         </select>
@@ -47,24 +56,6 @@ include "includes/header.php";
                             
                         
                     </div>
-                    
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="<?= $sollink?>">
-                                <i class="fas fa-chevron-left"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="includes/cikis.php">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $saglink?>">
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

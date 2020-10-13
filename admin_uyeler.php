@@ -38,6 +38,7 @@ include "includes/header.php";
                                                     <tr>
                                                         <th>Ad Soyad</th>
                                                         <th>Telefon</th>
+                                                        <th>Sil/Düzenle</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

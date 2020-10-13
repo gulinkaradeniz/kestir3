@@ -54,6 +54,7 @@ include "includes/header.php";
                                                                     <tr>
                                                                     <td><?=$tarih;?></td>
                                                                     <td><?=$saat;?></td>
+                                                                    <td>
                                                                     <?php
                                                                     $islem = $satir["operations"];
                                                                         $dizi = explode (",",$islem);
@@ -63,12 +64,13 @@ include "includes/header.php";
                                                                             $sorgu2 = $mysqli->query("SELECT * FROM islemler WHERE id=$deger");
                                                                             
                                                                             while($s = $sorgu2->fetch_assoc()){?>
-                                                                                <td><?=$s["isim"];?></td><?php
+                                                                                <?=$s["isim"];?><br><?php
                                                                             }   
                                                                         }
                                                                     
                                                                     
                                                                     ?>  
+                                                                    </td>
                                                                     </tr>   
                                                                 </div>
                                                                 

@@ -1,4 +1,5 @@
 <?php
+
 include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 unset($_SESSION['secilenislemler']);
@@ -13,6 +14,8 @@ $title="İşlemler";
 include "includes/header.php";
 ?>
 <body>
+<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+<script src="assets/js/bootstrap-select.min.js"></script>
 <div class="accountbg"></div>
 <div class="row">
         <div class="col-1 col-sm-2"></div>
@@ -25,24 +28,20 @@ include "includes/header.php";
                         <?php include "includes/sistemmesaji.php" ?>
     
                         <form class="form-horizontal m-t-30" action="islemlerkontrol.php" method="POST">
-                            <?php
-                                
-                                $sorgu = $mysqli->query("SELECT * FROM islemler");
-                                if($sorgu->num_rows>0){
-                                    while($satir=$sorgu->fetch_assoc()){?>
-                                        <div class="form-group text-center m-t-20">
-                                            <div class="btn-group btn-block btn-group-toggle" data-toggle="buttons">
-                                                <label class="btn btn-light">
-                                                    <input type="checkbox" name="islemler[]" value="<?php echo $satir["id"]; ?>">
+                            <div class="form-group text-center m-t-20">
+                                <select name="islemler[]" class="selectpicker" multiple data-live-search="true">
+                                    <?php
+                                        
+                                        $sorgu = $mysqli->query("SELECT * FROM islemler");
+                                        if($sorgu->num_rows>0){
+                                            while($satir=$sorgu->fetch_assoc()){?>
+                                                <option value="<?php echo $satir["id"]; ?>"><?= $satir["isim"];?></option>     
                                                 <?php
-                                                echo $satir["isim"];?>
-                                                </label>     
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }    
-                                }
-                            ?>
+                                            }    
+                                        }
+                                    ?>
+                                </select>
+                            </div>
                             <div class="form-group text-center m-t-20">
                                 <div class="col-12">
                                     <button class="btn btn-primary btn-block btn-lg waves-effect waves-light">Onayla</button>
