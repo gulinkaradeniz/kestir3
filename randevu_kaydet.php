@@ -16,13 +16,13 @@ if(isset($_SESSION['secilentarih']) && isset($_SESSION['secilenislemler']) && is
     unset($_SESSION['secilenislemler']);
     unset($_SESSION['secilentarih']);
     $_SESSION['sistemmesaji']="RANDEVU OLUŞTURULDU.";
-    $_SESSION['sistemmesajicss']="is-link is-light";
+    $_SESSION['sistemmesajicss']="alert-success";
     header('Location: randevu_basarili.php');
 }
 else{
     
     $_SESSION['sistemmesaji']="RANDEVU OLUŞTURULAMADI.";
-    $_SESSION['sistemmesajicss']="is-danger is-light";
+    $_SESSION['sistemmesajicss']="alert-danger";
     header('Location: randevu_al.php');
 }
 

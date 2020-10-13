@@ -5,7 +5,7 @@ $sorgu=$mysqli->query("UPDATE `tasks` SET `iptal`='1' WHERE `id`=$id");
 if ($sorgu==true)
 {
     $_SESSION['sistemmesaji']="RANDEVU İPTAL EDİLDİ OLARAK İŞARETLENDİ.";
-    $_SESSION['sistemmesajicss']="is-danger is-light";
+    $_SESSION['sistemmesajicss']="alert-danger";
     header("location:admin_randevular.php"); 
 }
 else

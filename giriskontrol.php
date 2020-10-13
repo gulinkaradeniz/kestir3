@@ -21,6 +21,7 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
             $_SESSION['telefon'] = $telefon;
             $_SESSION['userid'] = $satir['id'];
             $_SESSION['login'] = true;
+            $_SESSION['isadmin'] = false;
             $_SESSION['sistemmesajicss']="alert-success";
             $_SESSION['sistemmesaji']="HOŞGELDİNİZ" . " " . $satir['adsoyad'];
             if($satir['isadmin']==1){

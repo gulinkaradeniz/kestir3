@@ -1,6 +1,6 @@
 
 <?php
-include "baglanti.php";
+include "includes/baglanti.php";
 
 if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
     $telefon=$_POST['telefon'];
@@ -18,12 +18,12 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
     if ($sorgu->affected_rows > 0) {
         session_start();
         $_SESSION['sistemmesaji']="YENİ ŞİFRENİZLE GİRİŞ YAPABİLİRSİNİZ.";
-        $_SESSION['sistemmesajicss']="is-link is-light";
+        $_SESSION['sistemmesajicss']="alert-success";
         header("Location:index.php");
     } else {
         session_start();
         $_SESSION['sistemmesaji']="BU TELEFON NUMARASINA AİT KAYIT BULUNMAMAKTADIR.";
-        $_SESSION['sistemmesajicss']="is-danger is-light";
+        $_SESSION['sistemmesajicss']="alert-danger";
         header('Location: index.php');
     }
 

@@ -11,6 +11,14 @@ include "includes/header.php";
         <div class="col-10 col-sm-8">
             <div class="card card-pages m-t-40 shadow-none">
                 <div class="card-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="uye_anasayfa.php">Üye Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="includes/cikis.php">Çıkış</a>
+                        </li>
+                    </ul>
                 <div class="text-center m-t-0 m-b-15">
                                 <a href="index.php" class="logo logo-admin"><img src="assets\images\hair.png" width="200" height="200"></a>
                         </div>

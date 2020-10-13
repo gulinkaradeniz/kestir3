@@ -20,11 +20,11 @@ if(isset($_POST['islemler'])) {
         
     }
     $_SESSION['sistemmesaji']="YAPILACAK İŞLEM SEÇİLDİ.";
-    $_SESSION['sistemmesajicss']="is-link is-light";
+    $_SESSION['sistemmesajicss']="alert-success";
     header('Location: randevu_al.php');
 } else {
     $_SESSION['sistemmesaji']="BİR İŞLEM SEÇİNİZ.";
-    $_SESSION['sistemmesajicss']="is-danger is-light";
+    $_SESSION['sistemmesajicss']="alert-danger";
     header('Location: islemler.php');
 }
 ?>

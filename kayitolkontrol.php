@@ -1,5 +1,5 @@
 <?php
-include "baglanti.php";
+include "includes/baglanti.php";
 if(isset($_POST['telefon']) && isset($_POST['sifre']) && isset($_POST['adsoyad']) && isset($_POST['email']) ) {
     $telefon=$_POST['telefon'];
     $sifre=$_POST['sifre'];

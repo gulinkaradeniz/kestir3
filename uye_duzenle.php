@@ -1,11 +1,11 @@
-<?php 
+<?php
 include "includes/baglanti.php";
-
-$sorgu = $mysqli->query("SELECT * FROM islemler WHERE id =".(int)$_GET['id']); 
-$sonuc = $sorgu->fetch_assoc(); 
-$title="İşlem Düzenle";
+$title="Üyeleri Düzenle";
 include "includes/header.php";
+$sorgu = $mysqli->query("SELECT * FROM users WHERE id =".(int)$_GET['id']); 
+$sonuc = $sorgu->fetch_assoc(); 
 ?>
+
 <body>
     <div class="accountbg"></div>
     <div class="row">
@@ -16,7 +16,7 @@ include "includes/header.php";
                 <div class="card card-pages m-t-40 shadow-none">
     
                     <div class="card-body">
-                        <h5 class="font-18 text-center">DÜZENLE</h5>
+                        <h5 class="font-18 text-center">ÜYE DÜZENLE</h5>
                         
                         <?php include "includes/sistemmesaji.php" ?>
     
@@ -24,15 +24,16 @@ include "includes/header.php";
     
                             <div class="form-group">
                                 <div class="col-12">
-                                        <label>İşlem</label>
-                                    <input name="isim"class="form-control" type="text" required="" placeholder="İşlem" value="<?php echo $sonuc['isim']; ?>">
+                                        <label>Ad Soyad</label>
+                                    <input class="form-control" placeholder="Ad Soyad" name="adsoyad" required value="<?php echo $sonuc['adsoyad']; ?>">
                                 </div>
                             </div>
     
                             <div class="form-group">
                                 <div class="col-12">
-                                        <label>İşlem Süresi</label>
-                                    <input name="sure"class="form-control" type="text" required="" placeholder="..saat" value="<?php echo $sonuc['sure']; ?>">
+                                        <label>Telefon</label>
+                                    <input class="form-control"placeholder="Telefon" name="telefon" required value="<?php echo $sonuc['telefon']; ?>">
+
                                 </div>
                             </div>
 
@@ -48,30 +49,28 @@ include "includes/header.php";
         </div>
         <div class="col-1 col-sm-2"></div>
     </div>  
-             
-            <?php 
+    <?php 
 
-        if ($_POST) {
+    if ($_POST) {
+        
+        $adsoyad = $_POST['adsoyad'];
+        $telefon = $_POST['telefon'];
+
+        if ($adsoyad<>"" && $telefon<>"") { 
+        
+            if ($mysqli->query("UPDATE users SET adsoyad = '$adsoyad', telefon = '$telefon' WHERE id =".$_GET['id'])) 
+            {
+                $_SESSION['sistemmesaji']="ÜYE DÜZENLENDİ.";
+                $_SESSION['sistemmesajicss']="alert-success";
+                header("location:admin_uyeler.php"); 
             
-            $isim = $_POST['isim'];
-            $sure = $_POST['sure'];
-
-            if ($isim<>"" && $sure<>"") { 
-               
-                if ($mysqli->query("UPDATE islemler SET isim = '$isim', sure = '$sure' WHERE id =".$_GET['id'])) 
-                {
-                    session_start();
-                    $_SESSION['sistemmesaji']="İŞLEM DÜZENLENDİ.";
-                    $_SESSION['sistemmesajicss']="is-link is-light";
-                    header("location:admin_islem_ekle.php"); 
-                
-                }
-                else
-                {
-                    echo "Hata oluştu"; 
-                }
+            }
+            else
+            {
+                echo "Hata oluştu"; 
             }
         }
-        ?>     
+    }
+    ?>    
     </body>
 </html>

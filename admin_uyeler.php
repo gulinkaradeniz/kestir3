@@ -1,6 +1,6 @@
 <?php 
 include "includes/baglanti.php";
-$title="Randevular";
+$title="Üyeler";
 include "includes/header.php";
 ?>
 <body>
@@ -24,31 +24,11 @@ include "includes/header.php";
                     </ul>
     
                     <div class="card-body">
-                        <h5 class="font-18 text-center">İŞLEMLER</h5>
+                        <h5 class="font-18 text-center">ÜYELERİ DÜZENLE</h5>
                         
                         <?php include "includes/sistemmesaji.php" ?>
     
                         <form class="form-horizontal m-t-30" action="admin_islem_kontrol.php" method="POST">
-    
-                            <div class="form-group">
-                                <div class="col-12">
-                                        <label>İşlem</label>
-                                    <input name="isim"class="form-control" type="text" required="" placeholder="İşlem">
-                                </div>
-                            </div>
-    
-                            <div class="form-group">
-                                <div class="col-12">
-                                        <label>İşlem Süresi</label>
-                                    <input name="sure"class="form-control" type="text" required="" placeholder="..saat">
-                                </div>
-                            </div>
-
-                            <div class="form-group text-center m-t-20">
-                                <div class="col-12">
-                                    <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">İşlem Ekle</button>
-                                </div>
-                            </div>
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
@@ -56,45 +36,44 @@ include "includes/header.php";
                                             <table class="table table-hover mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>İşlem</th>
-                                                        <th>İşlem Süresi</th>
-                                                        <th>Sil/Düzenle</th>
+                                                        <th>Ad Soyad</th>
+                                                        <th>Telefon</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <div class="content">
                                                     <?php
                                                 
-                                                    $sorgu = $mysqli->query("SELECT * FROM islemler");
+                                                    $sorgu = $mysqli->query("SELECT * FROM users");
                                                     if($sorgu->num_rows>0){
                                                         while($satir=$sorgu->fetch_assoc()){?>
                                                         <p class="subtitle">
                                                             <div class="box">   
                                                                 <div class="level-left">
                                                                     <?php
-                                                                    $id = $satir['id'];?>
+                                                                    $id = $satir['id']; ?>
                                                                     <tr>
-                                                                    <td><?=$satir["isim"];?></td>
-                                                                    <td><?=$satir["sure"];?></td>
-                                                                    
+                                                                    <td><?=$satir["adsoyad"];?></td>
+                                                                    <td><?=$satir["telefon"];?></td>
 
-                                                                    <td><a href="sil.php?id=<?php echo $id; ?>" class="level-item" aria-label="retweet">
+                                                                
+                                                                    <td><a href="uye_sil.php?id=<?php echo $id; ?>" class="level-item" aria-label="retweet">
                                                                     <span class="icon has-text-danger">
                                                                         <i class="fas fa-trash-alt"></i>
                                                                     </span>
                                                                     </a>
                                                                     <span>&nbsp;&nbsp;</span>
-                                                                    <a href="duzenle.php?id=<?php echo $id; ?>" class="level-item" aria-label="like">
+                                                                    <a href="uye_duzenle.php?id=<?php echo $id; ?>" class="level-item" aria-label="like">
                                                                     <span class="icon is-small">
                                                                         <i class="fas fa-pencil-alt"></i>
-                                                                    </span>
-                                                                    </a></td>
+                                                                    </span></td>
+                                                                    </a>
                                                                     </tr>
+                                                                </div>
+
                                                                     
                                                                 
-                                                                </div>
                                                             </div>
-
                                                         </p>
                                                             
                                                             <?php

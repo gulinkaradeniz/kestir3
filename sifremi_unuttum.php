@@ -1,16 +1,23 @@
 <?php
 $telefon = $_POST['telefon'];
 $sifre = $_POST['sifre'];
-$title="Kayıt Ol";
+$title="Şifremi Unuttum";
 include "includes/header.php";
 ?>
 <body>
-        <div class="accountbg"></div>
-        
-        <div class="wrapper-page">
-                <div class="card card-pages shadow-none">
+<div class="accountbg"></div>
+<div class="row">
+        <div class="col-1 col-sm-2"></div>
+        <div class="col-10 col-sm-8">
+
+                <div class="card card-pages m-t-40 shadow-none">
     
                     <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.php">Anasayfa'ya Dön</a>
+                            </li>
+                        </ul>
                         <h5 class="font-18 text-center">ŞİFREMİ UNUTTUM</h5>
                         
                         <?php include "includes/sistemmesaji.php" ?>
@@ -40,6 +47,9 @@ include "includes/header.php";
                     </div>
     
                 </div>
-            </div>       
-    </body>
+        </div>
+    <div class="col-1 col-sm-2"></div>
+</div> 
+                 
+</body>
 </html>

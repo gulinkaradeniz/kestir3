@@ -2,32 +2,30 @@
 include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 unset($_SESSION['secilenuyeler']);
-$title="Randevu Al";
+$title="Üye Seç";
 include "includes/header.php";
 ?>
-
-
-
-
-    <body>
-        <div class="container">
-            <div class="columns">
-                <div class="column is-6 is-offset-3">
-                    <div class="card">
-                        <div class="has-text-centered">
-                            <div class="card-content">
-                            <p class="subtitle is-3">
-                                ÜYELER
-                            </p>
-                            <?php include "sistemmesaji.php"; ?>
-                            <p class="subtitle">
+<body>
+<div class="accountbg"></div>
+<div class="row">
+        <div class="col-1 col-sm-2"></div>
+        <div class="col-10 col-sm-8">
+            <div class="card card-pages m-t-40 shadow-none">
+                <div class="card-body">
+                
+                    <div class="row">
+                        
+                            <div class="card m-b-30 card-body">
+                            <h5 class="font-18 text-center">ÜYELER</h5>
+                                <?php include "includes/sistemmesaji.php" ?>
+                                <div class="button-items">
                                 <form action="randevu_al.php" method="POST">
                                     <?php
                                     $sorgu3 = $mysqli->query("SELECT * FROM users WHERE isadmin='0'");
                                     
                                     ?>
-                                    <div class="select is-success">
-                                        <select name="uyeler">
+                                    <div class="col-sm-12">
+                                        <select class="form-control" name=uyeler>
                                             <?php 
                                             while($satir3=$sorgu3->fetch_assoc()){
                                                 $dizi=$satir3["adsoyad"]."-".$satir3["telefon"];
@@ -36,30 +34,42 @@ include "includes/header.php";
                                             }
                                             ?>
                                         </select>
-                                    </div><hr>
-                                        <div class="field">
-                                            <button class="button is-success is-fullwidth">
-                                                Onayla
-                                            </button>
+                                    </div>
+                                    </div>
+                                    <div class="form-group text-center m-t-20">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light">Onayla</button>
                                         </div>
+                                    </div>
                                 </form>
-                            </p>
-                            </div>
-                        </div>
-                        <nav class="navbar" role="navigation" aria-label="main navigation">
-                            
-                            <div id="navbarBasicExample" class="navbar-menu">
-                               <div class="navbar-start">
-                                <a class="navbar-item" href="randevu_al.php">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                                
+                                </div>
                             </div>
                             
-                        </nav>
+                        
                     </div>
+                    
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?= $sollink?>">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="includes/cikis.php">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $saglink?>">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </body>
+    <div class="col-1 col-sm-2"></div>
+</div> 
+
+</body>
 </html>
