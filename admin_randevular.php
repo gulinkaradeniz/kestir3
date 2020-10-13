@@ -6,7 +6,7 @@ if($_SESSION['isadmin'] == false){
     die();
 }if(isset($_GET["sorgu"])){
 $filtrele=$_GET["sorgu"];}
-else{$filtrele="";}
+else{$filtrele="bekleyen";}
 $title="Randevular";
 include "includes/header.php";
 ?>
@@ -59,7 +59,11 @@ include "includes/header.php";
                                                 <th>Tarih</th>
                                                 <th>Saat</th>
                                                 <th>İşlem</th>
+                                                <?php if($filtrele == "bekleyen"){?>
                                                 <th>Tamamlandı/İptal Edildi</th>
+                                                <?php
+                                                }
+                                                ?>
 
                                             </tr>
                                         </thead>
@@ -104,23 +108,25 @@ include "includes/header.php";
                                                                     
                                                                     ?>  
                                                                     </td>
-                                                                    <form method="POST">
-                                                                        <nav class="level is-mobile">
-                                                                        <div class="level-left">
-                                                                            <td><a  href="islemtamam.php?id=<?php echo $id; ?>"class="level-item" aria-label="reply">
-                                                                            <span class="icon has-text-success">
-                                                                                <i class="fas fa-check-square"></i>
-                                                                            </span>
-                                                                            </a>
-                                                                            <span>&nbsp;&nbsp;</span>
-                                                                            <a href="islemiptal.php?id=<?php echo $id; ?>"class="level-item" aria-label="like">
-                                                                            <span class="icon has-text-danger">
-                                                                                <i class="fas fa-ban"></i>
-                                                                            </span>
-                                                                            </a></td>
-                                                                        </div>
-                                                                        </nav>
-                                                                    </form>
+                                                                    <?php if($filtrele == "bekleyen") {?>
+                                                                        <form method="POST">
+                                                                            <nav class="level is-mobile">
+                                                                            <div class="level-left">
+                                                                                <td><a  href="islemtamam.php?id=<?php echo $id; ?>"class="level-item" aria-label="reply">
+                                                                                <span class="icon has-text-success">
+                                                                                    <i class="fas fa-check-square"></i>
+                                                                                </span>
+                                                                                </a>
+                                                                                <span>&nbsp;&nbsp;</span>
+                                                                                <a href="islemiptal.php?id=<?php echo $id; ?>"class="level-item" aria-label="like">
+                                                                                <span class="icon has-text-danger">
+                                                                                    <i class="fas fa-ban"></i>
+                                                                                </span>
+                                                                                </a></td>
+                                                                            </div>
+                                                                            </nav>
+                                                                        </form><?php
+                                                                    }?>
                                                                     
                                                                     </tr>   
                                                                 </div>

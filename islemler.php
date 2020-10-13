@@ -35,7 +35,7 @@ include "includes/header.php";
                                         $sorgu = $mysqli->query("SELECT * FROM islemler");
                                         if($sorgu->num_rows>0){
                                             while($satir=$sorgu->fetch_assoc()){?>
-                                                <option value="<?php echo $satir["id"]; ?>"><?= $satir["isim"];?></option>     
+                                                    <option value="<?php echo $satir["id"]; ?>"><?= $satir["isim"];?></option>   
                                                 <?php
                                             }    
                                         }
