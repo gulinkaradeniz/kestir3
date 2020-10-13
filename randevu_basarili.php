@@ -1,5 +1,5 @@
 <?php
-include "includes/loginkontrol.php";
+//include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 $title="Randevularım";
 include "includes/header.php";

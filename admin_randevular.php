@@ -1,5 +1,5 @@
 <?php
-include "includes/loginkontrol.php";
+//include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 if($_SESSION['isadmin'] == false){
     header('Location: index.php');
