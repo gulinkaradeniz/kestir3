@@ -2,7 +2,7 @@
 include "includes/baglanti.php";
 if(isset($_SESSION['secilentarih']) && isset($_SESSION['secilenislemler']) && isset($_SESSION['userid']) ) {
 
-    /*$sql="SELECT telefon,sifre FROM kestir2db.users where telefon='$telefon'";
+    /*$sql="SELECT telefon,sifre FROM users where telefon='$telefon'";
     $sonuc2=mysqli_query($mysqli,$sql);*/
     $tarih= $_SESSION['secilentarih'];
     $islem= implode(",",$_SESSION['secilenislemler']);

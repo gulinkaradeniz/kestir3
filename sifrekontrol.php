@@ -6,7 +6,7 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
     $telefon=$_POST['telefon'];
     $sifre=$_POST['sifre'];
 
-    $sorgu = $mysqli->prepare("UPDATE `kestir2db`.`users` SET `sifre`='$sifre' WHERE `telefon`='$telefon';");
+    $sorgu = $mysqli->prepare("UPDATE `users` SET `sifre`='$sifre' WHERE `telefon`='$telefon';");
 
     if ($baglanti->errno > 0) {
         die("<b>Sorgu Hatası:</b> " . $baglanti->error);

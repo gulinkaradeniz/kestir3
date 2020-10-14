@@ -6,11 +6,11 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) && isset($_POST['adsoyad']
     $adsoyad=$_POST['adsoyad'];
     $email=$_POST['email'];
 
-    $sql="SELECT telefon,sifre FROM kestir2db.users where telefon='$telefon'";
+    $sql="SELECT telefon,sifre FROM users where telefon='$telefon'";
     $sonuc2=mysqli_query($mysqli,$sql);
 
     if ($sonuc2->num_rows==0){
-        $sqlekle="INSERT INTO `kestir2db`.`users` (`adsoyad`, `telefon`, `email`, `sifre`) VALUES ('$adsoyad', '$telefon', '$email', '$sifre')";
+        $sqlekle="INSERT INTO `users` (`adsoyad`, `telefon`, `email`, `sifre`) VALUES ('$adsoyad', '$telefon', '$email', '$sifre')";
         $sonuc=mysqli_query($mysqli,$sqlekle);
 
         $_SESSION['telefon'] = $telefon;

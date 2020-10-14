@@ -5,7 +5,7 @@ include "includes/baglanti.php";
 if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
     $telefon=$_POST['telefon'];
     $sifre=$_POST['sifre'];
-    $sql="SELECT * FROM kestir2db.users where telefon='$telefon' and sifre='$sifre'";
+    $sql="SELECT * FROM users where telefon='$telefon' and sifre='$sifre'";
     $sonuc=mysqli_query($mysqli,$sql);
 
     if ($sonuc->num_rows==0){

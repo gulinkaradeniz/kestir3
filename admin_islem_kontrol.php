@@ -4,7 +4,7 @@ include "includes/baglanti.php";
 $isim=$_POST['isim'];
 $sure=$_POST['sure'];
 
-$sqlekle3="INSERT INTO `kestir2db`.`islemler` (`isim`, `sure`) VALUES ('$isim','$sure')";
+$sqlekle3="INSERT INTO `islemler` (`isim`, `sure`) VALUES ('$isim','$sure')";
 $sonuc=mysqli_query($mysqli,$sqlekle3);
 
 session_start();
