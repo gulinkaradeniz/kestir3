@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include "includes/baglanti.php";
 $title="Randevular";
 include "includes/header.php";

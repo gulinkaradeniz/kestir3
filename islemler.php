@@ -1,6 +1,7 @@
 <?php
 
 //include "includes/loginkontrol.php";
+session_start();
 include "includes/baglanti.php";
 unset($_SESSION['secilenislemler']);
 if(isset($_POST['islemler'])) {

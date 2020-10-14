@@ -1,6 +1,5 @@
 <?php
-$telefon = $_POST['telefon'];
-$sifre = $_POST['sifre'];
+
 $title="Şifremi Unuttum";
 include "includes/header.php";
 ?>
@@ -19,8 +18,10 @@ include "includes/header.php";
                             </li>
                         </ul>
                         <h5 class="font-18 text-center">ŞİFREMİ UNUTTUM</h5>
-                        
+                        <?php$telefon = $_POST['telefon'];
+                        $sifre = $_POST['sifre']; ?>
                         <?php include "includes/sistemmesaji.php" ?>
+                        
     
                         <form class="form-horizontal m-t-30" action="sifrekontrol.php" method="POST">
     

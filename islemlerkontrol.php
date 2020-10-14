@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "includes/baglanti.php";
 $_SESSION['secilenislemler']=[];
 if(isset($_POST['islemler'])) {

@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 include "includes/baglanti.php";
 
 $tarih1=$_POST['tarih'];

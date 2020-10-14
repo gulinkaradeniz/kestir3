@@ -1,5 +1,5 @@
 <?php
-//include "includes/loginkontrol.php";
+include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 if($_SESSION['isadmin'] == false){
     header('Location: index.php');
@@ -47,9 +47,18 @@ include "includes/header.php";
                                 }
                                 </script>
                         </div>
+                        
                     <div class="col-lg-12">
                         <div class="card m-b-30">
                             <div class="card-body">
+                                <?php if(($filtrele == "iptal") || ($filtrele == "tamamlanan")){
+                                    $_SESSION["filtre"]=$filtrele?>
+                                    <div class="text-right">
+                                        <a href="temizle.php">Hepsini Temizle</a>
+                                    </div>
+                                <?php
+                                }
+                                ?>
                                 <div class="table-responsive">
                                     <table class="table table-hover mb-0">
                                         <thead>

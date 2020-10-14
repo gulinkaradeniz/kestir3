@@ -8,18 +8,31 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) && isset($_POST['adsoyad']
     $adsoyad=$_POST['adsoyad'];
     $email=$_POST['email'];
 
-    $sql="SELECT telefon,sifre FROM users where telefon='$telefon'";
+    $sql="SELECT * FROM users where telefon='$telefon'";
     $sonuc2=mysqli_query($mysqli,$sql);
 
     if ($sonuc2->num_rows==0){
         $sqlekle="INSERT INTO `users` (`adsoyad`, `telefon`, `email`, `sifre`) VALUES ('$adsoyad', '$telefon', '$email', '$sifre')";
         $sonuc=mysqli_query($mysqli,$sqlekle);
+        $sorgu="SELECT * FROM users";
+        $sonuc2=mysqli_query($mysqli,$sorgu);
+        var_dump($sonuc2);
+        while($satir=mysqli_fetch_array($sonuc2))
+        {
+            $_SESSION['telefon'] = $telefon;
+            $_SESSION['userid'] = $satir['id'];
+            $_SESSION['login'] = true;
+            $_SESSION['isadmin'] = false;
+            $_SESSION['sistemmesajicss']="alert-success";
+            $_SESSION['sistemmesaji']="HOŞGELDİNİZ" . " " . $satir['adsoyad']." ". "KAYIT BAŞARILI";
+            if($satir['isadmin']==1){
+                $_SESSION['isadmin'] = true;
+                header('Location: admin_randevular.php');
+            }else{
+                header('Location: index.php');
+            }
+        }
 
-        $_SESSION["telefon"]=$telefon;
-        $_SESSION['login'] == true;
-        $_SESSION['sistemmesaji']="KAYIT BAŞARILI";
-        $_SESSION['sistemmesajicss']="alert-success";
-        header('Location: uye_anasayfa.php');
         
     }
     else{

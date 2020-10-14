@@ -6,6 +6,7 @@ include "includes/baglanti.php";
 
     if ($mysqli->query("DELETE FROM islemler WHERE id =".(int)$_GET['id'])) 
     {
+        session_start();
         $_SESSION['sistemmesaji']="İŞLEM SİLİNDİ.";
         $_SESSION['sistemmesajicss']="alert-danger";
         header("location:admin_islem_ekle.php");

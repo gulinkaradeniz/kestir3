@@ -1,4 +1,5 @@
 <?php
+
 include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 unset($_SESSION['secilentarih']);
