@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title="Kayıt Ol";
 include "includes/header.php";
 ?>
@@ -21,7 +22,7 @@ include "includes/header.php";
                                     <a href="index.php" class="logo logo-admin"><img src="assets\images\hair.png" width="200" height="200"></a>
                             </div>
                     <h5 class="font-18 text-center">KAYIT OL</h5>
-
+                    <?php include "includes/sistemmesaji.php" ?>
                     <form class="form-horizontal m-t-30" action="kayitolkontrol.php" method="POST">
 
                         <div class="form-group">

@@ -1,6 +1,6 @@
 <?php
-session_start();
-$mysqli = new mysqli("localhost", "kestiruser", "kestirpass", "kestir2db");
+
+$mysqli = new mysqli("localhost", "root", "kestirpass", "kestirdb");
 
 /* check connection */
 if ($mysqli->connect_errno) {

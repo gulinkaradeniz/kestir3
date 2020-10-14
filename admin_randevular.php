@@ -140,7 +140,7 @@ include "includes/header.php";
                                                 }
                                                 else{
                                                     ?>
-                                                    <div class="notification is-danger">
+                                                    <div class="alert-danger">
                                                     KAYIT BULUNAMADI.
 
                                                     </div>

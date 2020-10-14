@@ -43,6 +43,7 @@ include "includes/header.php";
                                         
                                         <?php
                                         if(isset($_POST['uyeler'])) {
+                                            $_SESSION['userid']=$_POST['uyeler'];
                                             $_id=intval($_POST['uyeler']);
                                             $sorgu3 = $mysqli->query("SELECT * FROM users WHERE id=$_id");
                                             while($satir3=$sorgu3->fetch_assoc()){

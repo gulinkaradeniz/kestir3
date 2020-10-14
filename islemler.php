@@ -1,6 +1,6 @@
 <?php
 
-include "includes/loginkontrol.php";
+//include "includes/loginkontrol.php";
 include "includes/baglanti.php";
 unset($_SESSION['secilenislemler']);
 if(isset($_POST['islemler'])) {
@@ -24,6 +24,11 @@ include "includes/header.php";
                 <div class="card card-pages m-t-40 shadow-none">
     
                     <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="randevu_al.php">Geri Dön</a>
+                            </li>
+                        </ul>
                         <h5 class="font-18 text-center">İŞLEMLER</h5>
                         <?php include "includes/sistemmesaji.php" ?>
     

@@ -11,7 +11,7 @@ session_start();
 $_SESSION['login'] = true;
 $_SESSION['isadmin'] = true;
 $_SESSION['sistemmesaji']="İŞLEM EKLENDİ";
-$_SESSION['sistemmesajicss']="is-link is-light";
+$_SESSION['sistemmesajicss']="alert-success";
 header('Location: /admin_islem_ekle.php');
 
 ?>

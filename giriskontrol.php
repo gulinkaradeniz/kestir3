@@ -1,19 +1,19 @@
 
 <?php
+session_start();
 include "includes/baglanti.php";
-
 if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
     $telefon=$_POST['telefon'];
     $sifre=$_POST['sifre'];
     $sql="SELECT * FROM users where telefon='$telefon' and sifre='$sifre'";
     $sonuc=mysqli_query($mysqli,$sql);
-
+    var_dump($sonuc);
     if ($sonuc->num_rows==0){
 
         $_SESSION['login'] = false;
         $_SESSION['sistemmesaji']="GİRİŞ BAŞARISIZ!";
         $_SESSION['sistemmesajicss']="alert-danger";
-        header('Location: index.php');
+       header('Location: index.php');
     }
     else{
         while($satir=mysqli_fetch_array($sonuc))
@@ -24,6 +24,7 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) ) {
             $_SESSION['isadmin'] = false;
             $_SESSION['sistemmesajicss']="alert-success";
             $_SESSION['sistemmesaji']="HOŞGELDİNİZ" . " " . $satir['adsoyad'];
+            var_dump($_SESSION);
             if($satir['isadmin']==1){
                 $_SESSION['isadmin'] = true;
                 header('Location: admin_randevular.php');

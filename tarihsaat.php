@@ -14,6 +14,11 @@ include "includes/header.php";
         <div class="col-10 col-sm-8">
             <div class="card card-pages m-t-40 shadow-none">
                 <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="randevu_al.php">Geri Dön</a>
+                            </li>
+                        </ul>
                     <div class="content">
                         <div class="container-fluid">
                             <div class="row">

@@ -128,7 +128,7 @@ include "includes/header.php";
                 {
                     session_start();
                     $_SESSION['sistemmesaji']="İŞLEM DÜZENLENDİ.";
-                    $_SESSION['sistemmesajicss']="is-link is-light";
+                    $_SESSION['sistemmesajicss']="alert-success";
                     header("location:admin_islem_ekle.php"); 
                 
                 }

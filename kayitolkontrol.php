@@ -1,5 +1,7 @@
 <?php
+session_start();
 include "includes/baglanti.php";
+
 if(isset($_POST['telefon']) && isset($_POST['sifre']) && isset($_POST['adsoyad']) && isset($_POST['email']) ) {
     $telefon=$_POST['telefon'];
     $sifre=$_POST['sifre'];
@@ -13,15 +15,15 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) && isset($_POST['adsoyad']
         $sqlekle="INSERT INTO `users` (`adsoyad`, `telefon`, `email`, `sifre`) VALUES ('$adsoyad', '$telefon', '$email', '$sifre')";
         $sonuc=mysqli_query($mysqli,$sqlekle);
 
-        $_SESSION['telefon'] = $telefon;
-        $_SESSION['login'] = true;
+        $_SESSION["telefon"]=$telefon;
+        $_SESSION['login'] == true;
         $_SESSION['sistemmesaji']="KAYIT BAŞARILI";
         $_SESSION['sistemmesajicss']="alert-success";
-        header('Location: index.php');
+        header('Location: uye_anasayfa.php');
         
     }
     else{
-        session_start();
+
         $_SESSION['telefon'] = $telefon;
         $_SESSION['login'] = false;
         $_SESSION['sistemmesaji']="BU TELEFON NUMARASINA AİT KAYIT BULUNMAKTADIR.";

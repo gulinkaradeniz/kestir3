@@ -1,5 +1,6 @@
 <?php
 //include "includes/loginkontrol.php";
+session_start();
 include "includes/baglanti.php";
 $title="Randevularım";
 include "includes/header.php";
@@ -83,7 +84,7 @@ include "includes/header.php";
                                                 }
                                                 else{
                                                     ?>
-                                                    <div class="notification is-danger">
+                                                    <div class="alert-danger">
                                                     KAYIT BULUNAMADI.
 
                                                     </div>
