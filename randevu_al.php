@@ -13,7 +13,12 @@ include "includes/header.php";
                 <div class="card-body">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="uye_anasayfa.php">Üye Anasayfa</a>
+                            <?php if($_SESSION["isadmin"]) {?>
+                                <a class="nav-link active" href="admin_randevular.php">Randevular</a>
+                            <?php }
+                            else {?>
+                                <a class="nav-link active" href="uye_anasayfa.php">Üye Anasayfa</a>
+                            <?php } ?>  
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="includes/cikis.php">Çıkış</a>

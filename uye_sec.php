@@ -12,14 +12,11 @@ include "includes/header.php";
         <div class="col-10 col-sm-8">
             <div class="card card-pages m-t-40 shadow-none">
                 <div class="card-body">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="uye_anasayfa.php">Üye Anasayfa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="includes/cikis.php">Çıkış</a>
-                        </li>
-                    </ul>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="randevu_al.php">Geri Dön</a>
+                            </li>
+                        </ul>
                 
                     <div class="row">
                         

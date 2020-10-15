@@ -28,6 +28,28 @@ include "includes/header.php";
                             <a class="dropdown-item" href="includes/cikis.php"><span> ÇIKIŞ </span></a>
                         </div>
                     </li>
+                    <li class="dropdown notification-list list-inline-item">
+                        <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="mdi mdi-bell-outline noti-icon"></i>
+                            <span class="badge badge-pill badge-danger noti-icon-badge"><?=$_SESSION["sayac"]?></span>
+                        </a>
+                        <div class="dropdown-menu" style="">
+                            <?php 
+                            if($_SESSION["sayac"]){
+                            ?>
+                            <h6 class="dropdown-item-text">
+                                    Bildirimler
+                                </h6>
+                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 410.792px;"><div class="slimscroll notification-item-list" style="overflow: hidden; width: auto; height: 410.792px;">
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-danger"><i class="mdi mdi-message-text-outline"></i></div>
+                                    <p class="notify-details"><b>Yeni bir randevu</b><span class="text-muted"><?=$_SESSION["sayac"]." "."YENİ RANDEVU VAR" ?></span></p>
+                                </a>
+                            </div><?php
+                            } ?>
+                            <?php $_SESSION["sayac"]=0;?>
+                        </div>
+                    </li>
                 </ul>
                 <div class="card-body">
                     <h6 class="font-18 text-center">RANDEVULAR</h6>

@@ -20,6 +20,9 @@ if(isset($_SESSION['secilentarih']) && isset($_SESSION['secilenislemler']) && is
         $_SESSION['sistemmesajicss']="alert-success";
         header('Location: admin_randevular.php');
     }else{
+        $sayac=$_SESSION["sayac"];
+        $sayac++;
+        $_SESSION["sayac"]=$sayac;
         $_SESSION['sistemmesaji']="RANDEVU OLUŞTURULDU.";
         $_SESSION['sistemmesajicss']="alert-success";
         header('Location: randevu_basarili.php');
