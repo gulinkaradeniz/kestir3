@@ -101,11 +101,11 @@ include "includes/header.php";
                                         <tbody>
                                             <?php
                                             $userid=intval($_SESSION['userid']);    
-                                            $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON users.id=tasks.user WHERE status=1 and iptal=0";
+                                            $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON users.id=tasks.user WHERE status=1 and iptal=0 ORDER BY taskdate asc";
                                             if(isset($_GET['sorgu'])) {
-                                                if($_GET['sorgu'] == "iptal") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE iptal=1";
-                                                if($_GET['sorgu'] == "bekleyen") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE status=1 and iptal=0";
-                                                if($_GET['sorgu'] == "tamamlanan") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id  WHERE  status=0";
+                                                if($_GET['sorgu'] == "iptal") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE iptal=1 ORDER BY taskdate asc";
+                                                if($_GET['sorgu'] == "bekleyen") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE status=1 and iptal=0 ORDER BY taskdate asc";
+                                                if($_GET['sorgu'] == "tamamlanan") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id  WHERE  status=0 ORDER BY taskdate asc";
                                             }
                                             $sorgu =$mysqli->query($query);
                                                 if($sorgu->num_rows>0){

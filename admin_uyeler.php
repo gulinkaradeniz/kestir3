@@ -58,12 +58,12 @@ include "includes/header.php";
                                                                     <td><?=$satir["adsoyad"];?></td>
                                                                     <td><?=$satir["telefon"];?></td>
 
-                                                                
-                                                                    <td><a href="uye_sil.php?id=<?php echo $id; ?>" class="level-item" aria-label="retweet">
+                                                                    <td><a href="#" onclick="uyari('<?= $satir["adsoyad"]; ?>',<?= $id; ?>);" class="level-item" aria-label="retweet">
                                                                     <span class="icon has-text-danger">
                                                                         <i class="fas fa-trash-alt"></i>
                                                                     </span>
                                                                     </a>
+
                                                                     <span>&nbsp;&nbsp;</span>
                                                                     <a href="uye_duzenle.php?id=<?php echo $id; ?>" class="level-item" aria-label="like">
                                                                     <span class="icon is-small">
@@ -72,9 +72,14 @@ include "includes/header.php";
                                                                     </a>
                                                                     </tr>
                                                                 </div>
-
-                                                                    
-                                                                
+                                                                <script>
+                                                                function uyari(isim,id) {
+                                                                    var delUrl="uye_sil.php?id="+id;
+                                                                    if (confirm(isim + " kişisini silmek istediğinize emin misiniz?")) {
+                                                                        document.location = delUrl; 
+                                                                    } 
+                                                                }
+                                                                </script>
                                                             </div>
                                                         </p>
                                                             

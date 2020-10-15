@@ -41,7 +41,7 @@ include "includes/header.php";
                             <div class="form-group">
                                 <div class="col-12">
                                         <label>İşlem Süresi</label>
-                                    <input name="sure"class="form-control" type="text" required="" placeholder="..saat">
+                                    <input name="sure"class="form-control" type="number" required="" placeholder="..saat">
                                 </div>
                             </div>
 
@@ -79,7 +79,7 @@ include "includes/header.php";
                                                                     <td><?=$satir["sure"];?></td>
                                                                     
 
-                                                                    <td><a href="sil.php?id=<?php echo $id; ?>" class="level-item" aria-label="retweet">
+                                                                    <td><a href="#" onclick="uyari2('<?= $satir["isim"]; ?>',<?= $id; ?>);" class="level-item" aria-label="retweet">
                                                                     <span class="icon has-text-danger">
                                                                         <i class="fas fa-trash-alt"></i>
                                                                     </span>
@@ -91,9 +91,15 @@ include "includes/header.php";
                                                                     </span>
                                                                     </a></td>
                                                                     </tr>
-                                                                    
-                                                                
                                                                 </div>
+                                                                <script>
+                                                                function uyari2(isim,id) {
+                                                                    var delUrl="sil.php?id="+id;
+                                                                    if (confirm(isim + " işlemini silmek istediğinize emin misiniz?")) {
+                                                                        document.location = delUrl; 
+                                                                    } 
+                                                                }
+                                                                </script>
                                                             </div>
 
                                                         </p>
