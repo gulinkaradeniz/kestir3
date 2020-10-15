@@ -5,8 +5,6 @@ $title="Üye Anasayfa";
 include "includes/header.php";
 
 ?>
-
-
 <body>
 <div class="accountbg"></div>
 <div class="row">

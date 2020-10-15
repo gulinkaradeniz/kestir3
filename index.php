@@ -60,7 +60,7 @@ include "includes/header.php";
             
         </div>
         <div class="col-1 col-sm-2"></div>
-    </div>     
+    </div>    
 </body>
 </html>
 
