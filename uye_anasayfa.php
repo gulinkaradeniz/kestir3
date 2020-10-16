@@ -21,7 +21,7 @@ include "includes/header.php";
                         </li>
                     </ul>
                     <div class="text-center m-t-0 m-b-15">
-                        <a href="index.html" class="logo logo-admin"><img src="assets\images\hair.png" width="200" height="200"></a>
+                        <a href="index.php" class="logo logo-admin"><img src="assets\images\hair.png" width="200" height="200"></a>
                     </div>
                     <div class="content">
                         <div class="container-fluid">
