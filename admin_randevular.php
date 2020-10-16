@@ -47,8 +47,9 @@ include "includes/header.php";
                                 </a>
                             </div><?php
                             } ?>
-                            <?php $_SESSION["sayac"]=0;?>
+                            
                         </div>
+                        <?php $_SESSION["sayac"]=0;?>
                     </li>
                 </ul>
                 <div class="card-body">

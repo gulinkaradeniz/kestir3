@@ -42,7 +42,7 @@ include "includes/header.php";
                                         <tbody>
                                             <?php
                                             $userid=intval($_SESSION['userid']);    
-                                            $sorgu = $mysqli->query("SELECT * FROM tasks WHERE status=1 and iptal=0 and user=$userid ORDER BY taskdate DESC"); 
+                                            $sorgu = $mysqli->query("SELECT * FROM tasks WHERE status=1 and iptal=0 and user=$userid ORDER BY taskdate asc"); 
                                                 if($sorgu->num_rows>0){
                                                     while($satir=$sorgu->fetch_assoc()){?>
                                                         <p class="subtitle">
