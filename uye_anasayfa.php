@@ -48,7 +48,7 @@ include "includes/header.php";
 </div> 
 </div>
 <div class="modal fade iletisim-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-center">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title mt-0" id="mySmallModalLabel">İLETİŞİM BİLGİLERİMİZ</h5>
