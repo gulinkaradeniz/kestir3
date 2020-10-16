@@ -36,7 +36,8 @@ include "includes/header.php";
                         
                         <form class="form-horizontal m-t-30" action="islemlerkontrol.php" method="POST">
                             <div class="form-group text-center m-t-20">
-                                
+                                <?php $_SESSION['sistemmesaji']="SAÇ BOYAMA İÇİN FİYAT VERİLEMEMEKTEDİR.";
+                                    $_SESSION['sistemmesajicss']="alert-danger";?>
                                 <select name="islemler[]" class="selectpicker" multiple data-live-search="true">
                                     <?php
                                         $sorgu = $mysqli->query("SELECT * FROM islemler");
