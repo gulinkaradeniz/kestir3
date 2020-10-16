@@ -37,6 +37,12 @@ include "includes/header.php";
                                     <input name="isim"class="form-control" type="text" required="" placeholder="İşlem">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <label>İşlem Fiyatı</label>
+                                    <input name="sure"class="form-control" type="number" required="" placeholder="..TL">
+                                </div>
+                            </div>
     
                             <div class="form-group">
                                 <div class="col-12">
@@ -58,6 +64,7 @@ include "includes/header.php";
                                                 <thead>
                                                     <tr>
                                                         <th>İşlem</th>
+                                                        <th>İşlem Fiyatı</th>
                                                         <th>İşlem Süresi</th>
                                                         <th>Sil/Düzenle</th>
                                                     </tr>
@@ -76,6 +83,7 @@ include "includes/header.php";
                                                                     $id = $satir['id'];?>
                                                                     <tr>
                                                                     <td><?=$satir["isim"];?></td>
+                                                                    <td><?=$satir["fiyat"];?></td>
                                                                     <td><?=$satir["sure"];?></td>
                                                                     
 

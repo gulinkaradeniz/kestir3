@@ -91,6 +91,7 @@ include "includes/header.php";
                                                 <th>Tarih</th>
                                                 <th>Saat</th>
                                                 <th>İşlem</th>
+                                                <th>İşlemler Fiyat Toplamı</th>
                                                 <?php if($filtrele == "bekleyen"){?>
                                                 <th>Tamamlandı/İptal Edildi</th>
                                                 <?php
@@ -140,6 +141,26 @@ include "includes/header.php";
                                                                     
                                                                     ?>  
                                                                     </td>
+                                                                    <td>
+                                                                    <?php
+                                                                    $sonuc=0;
+                                                                    $islem = $satir["operations"];
+                                                                        $dizi = explode (",",$islem);
+                                                                        
+                                                                        foreach($dizi as $anahtar => $deger){
+                                                                            $deger=intval($deger);
+                                                                            $sorgu2 = $mysqli->query("SELECT * FROM islemler WHERE id=$deger");
+                                                                            while($s = $sorgu2->fetch_assoc()){?>
+                                                                                <?php $sonuc = $sonuc + $s["fiyat"];?>
+                                                                                <?php
+                                                                            }   
+                                                                        }
+                                                                        echo $sonuc ." TL";
+                                                                    
+                                                                    
+                                                                    ?>  
+                                                                    </td>
+
                                                                     <?php if($filtrele == "bekleyen") {?>
                                                                         <form method="POST">
                                                                             <nav class="level is-mobile">

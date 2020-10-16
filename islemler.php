@@ -10,7 +10,8 @@ if(isset($_POST['islemler'])) {
     foreach($islemler as $islem) {
         echo ' * ' . $islem . ' <br/>';
     }
-} 
+}
+    $title="Randevular";
 $title="İşlemler";
 include "includes/header.php";
 ?>
@@ -32,17 +33,17 @@ include "includes/header.php";
                         </ul>
                         <h5 class="font-18 text-center">İŞLEMLER</h5>
                         <?php include "includes/sistemmesaji.php" ?>
-    
+                        
                         <form class="form-horizontal m-t-30" action="islemlerkontrol.php" method="POST">
                             <div class="form-group text-center m-t-20">
+                                
                                 <select name="islemler[]" class="selectpicker" multiple data-live-search="true">
                                     <?php
-                                        
                                         $sorgu = $mysqli->query("SELECT * FROM islemler");
                                         if($sorgu->num_rows>0){
                                             while($satir=$sorgu->fetch_assoc()){?>
-                                                    <option value="<?php echo $satir["id"]; ?>"><?= $satir["isim"];?></option>   
-                                                <?php
+                                                    <option value="<?php echo $satir["id"]; ?>"><?php echo $satir["isim"]; if($satir["fiyat"]!=0){echo "-".$satir["fiyat"]." TL";}?></option>   
+                                                <?php   
                                             }    
                                         }
                                     ?>

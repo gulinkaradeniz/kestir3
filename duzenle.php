@@ -28,11 +28,18 @@ include "includes/header.php";
                                     <input name="isim"class="form-control" type="text" required="" placeholder="İşlem" value="<?php echo $sonuc['isim']; ?>">
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <div class="col-12">
+                                        <label>İşlem Fiyatı</label>
+                                    <input name="fiyat"class="form-control" type="number" required="" placeholder="..TL" value="<?php echo $sonuc['fiyat']; ?>">
+                                </div>
+                            </div>
     
                             <div class="form-group">
                                 <div class="col-12">
                                         <label>İşlem Süresi</label>
-                                    <input name="sure"class="form-control" type="text" required="" placeholder="..saat" value="<?php echo $sonuc['sure']; ?>">
+                                    <input name="sure"class="form-control" type="number" required="" placeholder="..saat" value="<?php echo $sonuc['sure']; ?>">
                                 </div>
                             </div>
 
@@ -54,11 +61,12 @@ include "includes/header.php";
         if ($_POST) {
             
             $isim = $_POST['isim'];
+            $fiyat = $_POST['fiyat'];
             $sure = $_POST['sure'];
 
-            if ($isim<>"" && $sure<>"") { 
+            if ($isim<>"" && $fiyat<>"" && $sure<>"") { 
                
-                if ($mysqli->query("UPDATE islemler SET isim = '$isim', sure = '$sure' WHERE id =".$_GET['id'])) 
+                if ($mysqli->query("UPDATE islemler SET isim = '$isim', fiyat = '$fiyat', sure = '$sure' WHERE id =".$_GET['id'])) 
                 {
                     session_start();
                     $_SESSION['sistemmesaji']="İŞLEM DÜZENLENDİ.";
