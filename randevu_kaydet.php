@@ -9,8 +9,19 @@ if(isset($_SESSION['secilentarih']) && isset($_SESSION['secilenislemler']) && is
     $islem= implode(",",$_SESSION['secilenislemler']);
     $userid= $_SESSION['userid'];
 
+    $dizi = explode (",",$islem);                                                                    
+    foreach($dizi as $anahtar => $deger){
+        $deger=intval($deger);
+        $sorgu2 = $mysqli->query("SELECT * FROM islemler WHERE id=$deger");
+        while($s = $sorgu2->fetch_assoc()){?>
+            <?php $sonuc = $sonuc + $s["fiyat"];
+            ?>
+            <?php
+        }   
+    }
+
  
-    $sqlekle= "INSERT INTO tasks (user, operations, taskdate, status) VALUES ('$userid','$islem', '$tarih', '1')";
+    $sqlekle= "INSERT INTO tasks (user, operations,fiyat, taskdate, status) VALUES ('$userid','$islem','$sonuc', '$tarih', '1')";
     $sonuc=mysqli_query($mysqli,$sqlekle);
     unset($_SESSION['secilenislemler']);
     unset($_SESSION['secilentarih']);

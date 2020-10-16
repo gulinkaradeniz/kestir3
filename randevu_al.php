@@ -67,6 +67,7 @@ include "includes/header.php";
                                             
                                                 echo "Seçilen işlem=".$satir["isim"]."<br>";
                                                 
+                                                
                                             }
 
                                         }
@@ -76,6 +77,7 @@ include "includes/header.php";
                                         if(isset($_SESSION["secilentarih"])){
                                             echo "Seçilen tarih=".($_SESSION["secilentarih"]);
                                         }
+
                                         ?>
                                         <button type="button" class="btn btn-info waves-effect m-l-5" onclick="javascript:location.href='randevu_kaydet.php'">RANDEVUYU ONAYLA</button>
                                     </div>

@@ -91,7 +91,7 @@ include "includes/header.php";
                                                 <th>Tarih</th>
                                                 <th>Saat</th>
                                                 <th>İşlem</th>
-                                                <th>İşlemler Fiyat Toplamı</th>
+                                                <th>Tahmini Fiyat</th>
                                                 <?php if($filtrele == "bekleyen"){?>
                                                 <th>Tamamlandı/İptal Edildi</th>
                                                 <?php
@@ -103,11 +103,11 @@ include "includes/header.php";
                                         <tbody>
                                             <?php
                                             $userid=intval($_SESSION['userid']);    
-                                            $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON users.id=tasks.user WHERE status=1 and iptal=0 ORDER BY taskdate asc";
+                                            $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations,tasks.fiyat FROM tasks INNER JOIN users ON users.id=tasks.user WHERE status=1 and iptal=0 ORDER BY taskdate asc";
                                             if(isset($_GET['sorgu'])) {
-                                                if($_GET['sorgu'] == "iptal") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE iptal=1 ORDER BY taskdate asc";
-                                                if($_GET['sorgu'] == "bekleyen") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id WHERE status=1 and iptal=0 ORDER BY taskdate asc";
-                                                if($_GET['sorgu'] == "tamamlanan") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations FROM tasks INNER JOIN users ON tasks.user=users.id  WHERE  status=0 ORDER BY taskdate asc";
+                                                if($_GET['sorgu'] == "iptal") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations,tasks.fiyat FROM tasks INNER JOIN users ON tasks.user=users.id WHERE iptal=1 ORDER BY taskdate asc";
+                                                if($_GET['sorgu'] == "bekleyen") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations,tasks.fiyat FROM tasks INNER JOIN users ON tasks.user=users.id WHERE status=1 and iptal=0 ORDER BY taskdate asc";
+                                                if($_GET['sorgu'] == "tamamlanan") $query = "SELECT tasks.id,tasks.taskdate,users.adsoyad,users.telefon,tasks.operations,tasks.fiyat FROM tasks INNER JOIN users ON tasks.user=users.id  WHERE  status=0 ORDER BY taskdate asc";
                                             }
                                             $sorgu =$mysqli->query($query);
                                                 if($sorgu->num_rows>0){
@@ -142,30 +142,14 @@ include "includes/header.php";
                                                                     ?>  
                                                                     </td>
                                                                     <td>
-                                                                    <?php
-                                                                    $sonuc=0;
-                                                                    $islem = $satir["operations"];
-                                                                        $dizi = explode (",",$islem);
-                                                                        
-                                                                        foreach($dizi as $anahtar => $deger){
-                                                                            $deger=intval($deger);
-                                                                            $sorgu2 = $mysqli->query("SELECT * FROM islemler WHERE id=$deger");
-                                                                            while($s = $sorgu2->fetch_assoc()){?>
-                                                                                <?php $sonuc = $sonuc + $s["fiyat"];?>
-                                                                                <?php
-                                                                            }   
-                                                                        }
-                                                                        echo $sonuc ." TL";
-                                                                    
-                                                                    
-                                                                    ?>  
+                                                                    <?=$satir["fiyat"];?>
                                                                     </td>
 
                                                                     <?php if($filtrele == "bekleyen") {?>
                                                                         <form method="POST">
                                                                             <nav class="level is-mobile">
                                                                             <div class="level-left">
-                                                                                <td><a  href="islemtamam.php?id=<?php echo $id; ?>"class="level-item" aria-label="reply">
+                                                                                <td><a data-toggle="modal" data-target=".iletisim-modal"  onclick="kontrol(<?= $satir["fiyat"] ?>,<?= $id; ?>);" class="level-item" aria-label="reply">
                                                                                 <span class="icon has-text-success">
                                                                                     <i class="fas fa-check-square"></i>
                                                                                 </span>
@@ -210,6 +194,67 @@ include "includes/header.php";
             </div>
         </div>
         <div class="col-1 col-sm-2"></div>
-    </div>       
+        <script>
+        function kontrol(tutar,id) {
+            console.log(tutar);
+            console.log(id);
+            document.getElementById("gizli_id").value=id;
+            document.getElementById("islem_tutar").value=tutar;
+
+        }
+        </script>
+</div>
+    <div class="modal fade iletisim-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="mySmallModalLabel">İŞLEM TAMAMLANDI</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <div class="media m-b-30">
+                    <form class="form-horizontal m-t-30" action="" method="POST">
+                        <div class="form-group">
+                            <div>
+                                    <label>İşlem Fiyatı</label>
+                                <input name="fiyat"class="form-control" type="number" required="" placeholder="..TL" value="fiyat" id="islem_tutar">
+                                <input name="islem_id" class="form-control" type="hidden" id="gizli_id" value="">
+                            </div>
+                        </div>
+                        <div class="form-group text-center m-t-20">
+                            <div>
+                                <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Düzenlemeyi Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->   
+<?php 
+
+if ($_POST) {
+    
+    $fiyat = $_POST['fiyat'];
+    $islem_id = $_POST['islem_id'];
+
+
+    if ($fiyat<>"") { 
+    
+        if ($mysqli->query("UPDATE tasks SET fiyat = '$fiyat' WHERE id =$islem_id")) 
+        {
+            header("location:admin_randevular.php"); 
+        
+        }
+        else
+        {
+            echo "Hata oluştu"; 
+        }
+    }
+}
+?>      
 </body>
 </html>

@@ -16,7 +16,6 @@ if(isset($_POST['telefon']) && isset($_POST['sifre']) && isset($_POST['adsoyad']
         $sonuc=mysqli_query($mysqli,$sqlekle);
         $sorgu="SELECT * FROM users";
         $sonuc2=mysqli_query($mysqli,$sorgu);
-        var_dump($sonuc2);
         while($satir=mysqli_fetch_array($sonuc2))
         {
             $_SESSION['telefon'] = $telefon;
