@@ -10,12 +10,4 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <title><?= $title?></title>
-        <script type="text/javascript">
-            window.onunload=function()
-            {
-                $.ajax({
-                url: "includes/cikis.php",
-                });
-            }
-        </script>
     </head>

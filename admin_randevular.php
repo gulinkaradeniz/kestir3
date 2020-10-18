@@ -7,6 +7,9 @@ if($_SESSION['isadmin'] == false){
 }if(isset($_GET["sorgu"])){
 $filtrele=$_GET["sorgu"];}
 else{$filtrele="bekleyen";}
+if(isset($_SESSION["sayac"])){
+    $_SESSION["sayac"];}
+    else{$_SESSION["sayac"]=0;}
 $title="Randevular";
 include "includes/header.php";
 ?>
@@ -28,6 +31,8 @@ include "includes/header.php";
                             <a class="dropdown-item" href="includes/cikis.php"><span> ÇIKIŞ </span></a>
                         </div>
                     </li>
+
+                    
                     <li class="dropdown notification-list list-inline-item">
                         <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="mdi mdi-bell-outline noti-icon"></i>
@@ -149,7 +154,7 @@ include "includes/header.php";
                                                                         <form method="POST">
                                                                             <nav class="level is-mobile">
                                                                             <div class="level-left">
-                                                                                <td><a data-toggle="modal" data-target=".iletisim-modal"  onclick="kontrol(<?= $satir["fiyat"] ?>,<?= $id; ?>);" class="level-item" aria-label="reply">
+                                                                                <td><a  data-toggle="modal" data-target=".iletisim-modal"  onclick="kontrol(<?= $satir["fiyat"] ?>,<?= $id; ?>);" class="level-item" aria-label="reply">
                                                                                 <span class="icon has-text-success">
                                                                                     <i class="fas fa-check-square"></i>
                                                                                 </span>
@@ -240,14 +245,14 @@ if ($_POST) {
     
     $fiyat = $_POST['fiyat'];
     $islem_id = $_POST['islem_id'];
-
-
     if ($fiyat<>"") { 
-    
-        if ($mysqli->query("UPDATE tasks SET fiyat = '$fiyat' WHERE id =$islem_id")) 
+        $sorgu1=$mysqli->query("UPDATE tasks SET fiyat = '$fiyat' WHERE id =$islem_id");
+        $sorgu=$mysqli->query("UPDATE `tasks` SET `status`='0' WHERE `id`=$islem_id");
+        if ($sorgu1 && $sorgu) 
         {
+            $_SESSION['sistemmesajicss']="alert-success";
+            $_SESSION['sistemmesaji']="RANDEVU TAMAMLANDI OLARAK İŞARETLENDİ.";
             header("location:admin_randevular.php"); 
-        
         }
         else
         {
